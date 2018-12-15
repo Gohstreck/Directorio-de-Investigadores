@@ -7,7 +7,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=project
     ports:
-      - "5432:5432"
+      - 5432:5432
     networks:
       - my-network
 
@@ -19,26 +19,26 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8000:8000
       - 8080:8000
 
   nginx:
     container_name: nginx
     image: nginx:1.13
     ports:
-      - 80:8004
+      - 8004:8004
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - djangoapp02
     networks:
       - my-network
+
   angular:
     container_name: angular
-    build: ./views/
+    build: ./views
     networks:
       - my-network
     ports:
-      - 80
+      - 80:80
 networks:
   my-network:
