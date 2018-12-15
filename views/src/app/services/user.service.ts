@@ -21,7 +21,7 @@ export class UserService {
   }
 
   registerUser(user: NewUser) {
-    const url = this.site.getApiUrl() + 'api/v1/rest-auth/registration/';
+    const url = this.site.getApiUrlService() + 'api/v1/rest-auth/registration/';
     const body = user;
     const httpOptions = {
       headers: new HttpHeaders({
