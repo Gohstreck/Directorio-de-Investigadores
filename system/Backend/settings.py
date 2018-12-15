@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
 # Application definition
 
@@ -53,18 +52,10 @@ INSTALLED_APPS = [
     'rest_auth.registration',
 	'django_filters',
 ]
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Email related configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'directoriodeinvestigadores@gmail.com'
-EMAIL_HOST_PASSWORD = 'researchersguide'
-EMAIL_PORT = 587
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
@@ -120,26 +111,13 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    }
 ]
 
 # Rest framework configuration
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-    )
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 
 
