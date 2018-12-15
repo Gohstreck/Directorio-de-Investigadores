@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
   config = {
-    apiUrl: 'http://localhost:8000/',
+    ApiUrlService: 'http://0.0.0.0:8004/',
+    apiUrl: 'http://0.0.0.0/',
     projectName: 'Directorio Mexicano de Investigadores',
     projectAcronym: 'DMI'
   };
@@ -19,7 +20,9 @@ export class ConfigService {
   getApiUrl() {
     return this.config.apiUrl;
   }
-
+  getApiUrlService() {
+    return this.config.ApiUrlService;
+  }
   getProjectName() {
     return this.config.projectName;
   }
